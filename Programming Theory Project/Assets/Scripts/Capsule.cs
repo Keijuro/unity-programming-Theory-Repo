@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Capsule : Shape
+public class Capsule : Shape // INHERITANCE
 {
     [SerializeField]
     private float m_RangeX = 1.0f;
-    public float RangeX {get{return m_RangeX;}}
+    public float RangeX {get{return m_RangeX;}} // ENCAPSULATION
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +15,8 @@ public class Capsule : Shape
         m_color = Color.yellow;
     }
 
-    protected override void OriginalMove()
+    protected override void OriginalMove() // POLYMORPHISM
     {
-        float targetX = RangeX * Mathf.Sin(Time.time);
-        Vector3 target = new Vector3(targetX,0,0);
-        transform.Translate(target * Time.deltaTime, Space.World);
+        transform.Translate(OscillationTarget(RangeX,0,0) * Time.deltaTime, Space.World); // INHERITANCE
     }
 }

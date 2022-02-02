@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sphere : Shape
+public class Sphere : Shape // INHERITANCE
 {
     [SerializeField]
     private float m_RangeZ = 10.0f;
-    public float RangeZ {get{return m_RangeZ;}}
+    public float RangeZ {get{return m_RangeZ;}} // ENCAPSULATION
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +15,8 @@ public class Sphere : Shape
         m_color = Color.red;
     }
 
-    protected override void OriginalMove()
+    protected override void OriginalMove() // POLYMORPHISM
     {
-        float targetZ = RangeZ * Mathf.Sin(Time.time);
-        Vector3 target = new Vector3(0,0,targetZ);
-        transform.Translate(target * Time.deltaTime, Space.World);
+        transform.Translate(OscillationTarget(0,0,RangeZ) * Time.deltaTime, Space.World); // INHERITANCE
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cube : Shape
+public class Cube : Shape // INHERITANCE
 {
     // Start is called before the first frame update
     void Start()
@@ -12,9 +12,9 @@ public class Cube : Shape
         m_color = Color.blue;
     }
 
-    protected override void OriginalMove()
+    protected override void OriginalMove() // POLYMORPHISM
     {
-        transform.Translate(OscillationTarget(0,1,0) * Time.deltaTime);
+        transform.Translate(OscillationTarget(0,1,0) * Time.deltaTime); // INHERITANCE
     }
 
 }
